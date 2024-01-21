@@ -1,6 +1,9 @@
 import json
 import time
+<<<<<<< HEAD
 
+=======
+>>>>>>> 344a4d01d31ce324bad6f45567e5676b0545f98e
 import cv2
 import numpy as np
 import spotipy
@@ -113,10 +116,22 @@ while True:
             maxindex = int(np.argmax(emotion_prediction))
             cv2.putText(frame, emotion_dict[maxindex], (x+5, y-20), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2, cv2.LINE_AA)
 
+<<<<<<< HEAD
         break
 
 cv2.imshow('Emotion Detection', frame)
 time.sleep(3)
+=======
+
+        song_recommendations = music_recommendation(emotion_output)
+        create_playlist(emotion_label)
+        break
+
+cv2.imshow('Emotion Detection', frame)
+
+time.sleep(5)
+
+>>>>>>> 344a4d01d31ce324bad6f45567e5676b0545f98e
 cap.release()
 cv2.destroyAllWindows()
 print('Müzik önerileri hazırlanıyor')

@@ -35,7 +35,7 @@ emotion_model.add(MaxPooling2D(pool_size=(2, 2)))
 emotion_model.add(Dropout(0.25))
 
 emotion_model.add(Flatten())
-emotion_model.add(Dense(1024, activation='relu'))
+emotion_model.add(Dense(200, activation='relu'))
 emotion_model.add(Dropout(0.5))
 emotion_model.add(Dense(7, activation='softmax')) #"Softmax" aktivasyon fonksiyonu, sınıflar arasındaki olasılıkları verir ve en yüksek olasılığa sahip sınıfı seçer.
 
