@@ -1,4 +1,6 @@
 import json
+import time
+
 import cv2
 import numpy as np
 import spotipy
@@ -111,12 +113,14 @@ while True:
             maxindex = int(np.argmax(emotion_prediction))
             cv2.putText(frame, emotion_dict[maxindex], (x+5, y-20), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2, cv2.LINE_AA)
 
-        cv2.imshow('Emotion Detection', saved_frame)
-
-        song_recommendations = music_recommendation(emotion_output)
-        create_playlist(emotion_label)
         break
 
-# Release the webcam and close all windows
+cv2.imshow('Emotion Detection', frame)
+time.sleep(3)
 cap.release()
 cv2.destroyAllWindows()
+print('Müzik önerileri hazırlanıyor')
+song_recommendations = music_recommendation(emotion_output)
+print('Playlist oluşturuluyor')
+create_playlist(emotion_label)
+

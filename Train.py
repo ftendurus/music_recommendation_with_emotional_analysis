@@ -23,12 +23,12 @@ validation_generator = validation_data_gen.flow_from_directory(
 
 emotion_model = Sequential()
 
-emotion_model.add(Conv2D(32, kernel_size=(3, 3), activation='relu', input_shape=(48, 48, 1)))
-emotion_model.add(Conv2D(64, kernel_size=(3, 3), activation='relu'))
-emotion_model.add(MaxPooling2D(pool_size=(2, 2)))
-emotion_model.add(Dropout(0.25))
+emotion_model.add(Conv2D(32, kernel_size=(3, 3), activation='relu', input_shape=(48, 48, 1))) #32lik 3`e 3 filtreleme, giriş 48*48 boyutunda görüntü
+emotion_model.add(Conv2D(64, kernel_size=(3, 3), activation='relu')) #64lük 3*3 filtre
+emotion_model.add(MaxPooling2D(pool_size=(2, 2))) #2*2 matris oluştur, en iyi sekilde boyutu dusur
+emotion_model.add(Dropout(0.25)) #nöronları 1/4 devre dışı bırak
 
-emotion_model.add(Conv2D(128, kernel_size=(3, 3), activation='relu'))
+emotion_model.add(Conv2D(128, kernel_size=(3, 3), activation='relu')) #128 3*3 filtre
 emotion_model.add(MaxPooling2D(pool_size=(2, 2)))
 emotion_model.add(Conv2D(128, kernel_size=(3, 3), activation='relu'))
 emotion_model.add(MaxPooling2D(pool_size=(2, 2)))
@@ -37,9 +37,9 @@ emotion_model.add(Dropout(0.25))
 emotion_model.add(Flatten())
 emotion_model.add(Dense(1024, activation='relu'))
 emotion_model.add(Dropout(0.5))
-emotion_model.add(Dense(7, activation='softmax'))
+emotion_model.add(Dense(7, activation='softmax')) #"Softmax" aktivasyon fonksiyonu, sınıflar arasındaki olasılıkları verir ve en yüksek olasılığa sahip sınıfı seçer.
 
-cv2.ocl.setUseOpenCL(False)
+cv2.ocl.setUseOpenCL(True)
 
 emotion_model.compile(loss='categorical_crossentropy', optimizer=Adam(lr=0.0001, decay=1e-6), metrics=['accuracy'])
 
